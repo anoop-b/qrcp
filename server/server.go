@@ -252,7 +252,7 @@ func New(cfg *config.Config) (*Server, error) {
 			// Set the value of the variable to the actually transferred files
 			htmlVariables.File = strings.Join(transferredFiles, ", ")
 			serveTemplate("done", pages.Done, w, htmlVariables)
-			if cfg.KeepAlive == false {
+			if !cfg.KeepAlive {
 				app.stopChannel <- true
 			}
 		case "GET":
